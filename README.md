@@ -14,7 +14,7 @@ git clone https://github.com/fadhil-had/Cypress-Automation-Dealls-Mentoring.git
 
 ## The project uses the following:
 
-- *[Node.js]([https://nodejs.org/en/download/)*
+- *[Node.js](https://nodejs.org/en/download/)*
 - *[Cypress](https://www.cypress.io/)* as the web browser automation framework using the Javascript.
 - *[JavaScript](https://testng.org/doc/)* as the the programming language.
 - *[Visual Studio Code](https://code.visualstudio.com/)* as the IDE.
@@ -46,4 +46,4 @@ npx cypress run
 
 ## Additional (Bugs):
 
-This is the answer for additional question *[Here]([https://docs.google.com/document/d/1naniuk7NbCINhe5ZbOF8WXrWKiWapg3b_k-57KitUGc/edit?usp=sharing)
+This is the answer for additional question *[Here](https://docs.google.com/document/d/1naniuk7NbCINhe5ZbOF8WXrWKiWapg3b_k-57KitUGc/edit?usp=sharing)
