@@ -16,7 +16,7 @@ describe('Register scenario spec', () => {
   });
 
   //Positive Scenario
-  /*it('Register with valid data', () => {
+  it('Register with valid data', () => {
     cy.mentorRegister(randomFullname, randomEmail, randomPhone, randomPassword);
     cy.get('.ant-message-notice-content').should('contain', 'Complete data success! Please wait a moment');
     cy.wait(2000);
@@ -31,23 +31,5 @@ describe('Register scenario spec', () => {
       cy.wait(2000);
       cy.get('.ant-message-notice-content').should('have.text', 'Email already registered, please login');
     });
-  })*/
-
-  //Bug Scenario
-  it('Search mentor data that have been registered', () => {
-    cy.on('uncaught:exception', (err, runnable) => {
-      return false
-    })
-
-    cy.mentorRegister(randomFullname, randomEmail, randomPhone, randomPassword);
-    cy.get('.ant-message-notice-content').should('contain', 'Complete data success! Please wait a moment');
-    cy.wait(2000);
-    cy.get('.ant-modal-close-x').click();
-    
-    let mentorName = randomFullname; //Random
-    cy.searchMentor(mentorName);
-    cy.wait(2000);
-    //cy.get('.border-b > .line-clamp-1').should('have.text', `${mentorName}`); //Expected Result
-    cy.get('.mt-2').should('contain', 'Coba cari kata kunci lain, sementara itu'); //Actual Result
   })
 })

@@ -45,3 +45,5 @@ npx cypress run
 4. Result will appear in terminal/Cypress Dashboard
 
 ## Additional (Bugs):
+
+This is the answer for additional question *[Here]([https://docs.google.com/document/d/1naniuk7NbCINhe5ZbOF8WXrWKiWapg3b_k-57KitUGc/edit?usp=sharing)
