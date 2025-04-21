@@ -59,7 +59,7 @@ describe('Search mentor scenario spec', () => {
   })
 
   //Negative Scenario
-  it('Scheduler mentor with invalid data', () => {
+  it('Scheduler mentor with existing data', () => {
     cy.on('uncaught:exception', (err, runnable) => {
       return false
     })
