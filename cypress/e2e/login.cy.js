@@ -1,4 +1,4 @@
-describe('Login sscenario spec', () => {  
+describe('Login scenario spec', () => {  
   const baseUrl = "/";
   const { faker } = require('@faker-js/faker');
   const randomPassword = faker.internet.password(); //Random
@@ -10,7 +10,7 @@ describe('Login sscenario spec', () => {
 
   //Positive Scenario
   it('Login with valid email and password', () => {
-    cy.fixture('loginData').then((data) => {
+    cy.fixture('userData').then((data) => {
       cy.userLogin(data.email, data.password);
       cy.wait(2000);
       cy.get('.ant-message-notice-content').should('contain', 'Sign in success');

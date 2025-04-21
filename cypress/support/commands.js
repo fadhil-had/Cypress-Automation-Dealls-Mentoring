@@ -43,66 +43,67 @@ Cypress.Commands.add('userLoginEmpty', () => {
 });
 
 Cypress.Commands.add('mentorRegister', (fullname, email, phone, password) => {
-  const registerStep = new RegisterStep();
-  registerStep.basicData(fullname, email, phone);
-  registerStep.skillData();
-  registerStep.companyData();
-  registerStep.institutionData();
-  registerStep.aboutData();
+  cy.basicData(fullname,email,phone);
+  cy.skillData();
+  cy.companyData();
+  cy.institutionData();
 
+  cy.get('#aboutMe').type('Hi, saya adalah orang yang lagi test hehe');
+  cy.get('.order-1 > span').click();
+
+  //Verifikasi
   cy.get('.ant-checkbox-input').check();
   cy.get('.order-1 > span').click();
 
+  //Fill password
   cy.get('#password').type(password);
   cy.get('#confirmPassword').type(password);
   cy.get('#checkPrivacyPolicy').check();
   cy.get('#mentoring-onboarding-finish-btn').click();
 });
 
-class RegisterStep {
-  basicData(fullname, email, phone){
-    cy.get('#dealls-navbar-register-btn').click();
-    cy.wait(2000);
-    cy.get(':nth-child(2) > .mt-auto > .text-white').click();
-    cy.get('#mentor-onboarding_fullName').type(fullname);
-    cy.get('#mentor-onboarding_email').type(email);
-    cy.get('#mentor-onboarding_whatsapp').type(phone);
-    cy.get('.order-1 > span').click();
-  }
+Cypress.Commands.add('basicData', (fullname, email, phone) => {
+  cy.get('#dealls-navbar-register-btn').click();
+  cy.wait(2000);
+  cy.get(':nth-child(2) > .mt-auto > .text-white').click();
+  cy.get('#mentor-onboarding_fullName').type(fullname);
+  cy.get('#mentor-onboarding_email').type(email);
+  cy.get('#mentor-onboarding_whatsapp').type(phone);
+  cy.get('.order-1 > span').click();
+});
 
-  skillData(){
-    cy.get(':nth-child(1) > .gap-4 > .ant-form-item > .ant-row > .ant-col > .ant-form-item-control-input > .ant-form-item-control-input-content > .ant-btn > .box-border > .relative > .flex > .font-bold').click();
-    cy.get('#expertise-list-form_careerPanels_0_category').click();
-    cy.get('.ant-select-item-option-active').click();
-    cy.get('.overflow-y-auto > :nth-child(1) > .ant-checkbox-wrapper > .ant-checkbox > .ant-checkbox-input').check();
-    cy.get('.order-1 > span').click();
-  }
+Cypress.Commands.add('skillData', () => {
+  cy.get(':nth-child(1) > .gap-4 > .ant-form-item > .ant-row > .ant-col > .ant-form-item-control-input > .ant-form-item-control-input-content > .ant-btn > .box-border > .relative > .flex > .font-bold').click();
+  cy.get('#expertise-list-form_careerPanels_0_category').click();
+  cy.get('.ant-select-item-option-active').click();
+  cy.get('.overflow-y-auto > :nth-child(1) > .ant-checkbox-wrapper > .ant-checkbox > .ant-checkbox-input').check();
+  cy.get('.order-1 > span').click();
+});
 
-  companyData(){
-    cy.get('#companyName').type('DANA{enter}');
-    cy.get('#rc_select_4').click();
-    cy.wait(1000);
-    cy.get('#rc_select_4').type('Fintech{enter}');
-    cy.get('#roleLevel').click();
-    cy.wait(1000);
-    cy.get('#roleLevel').type('Associate / Officer{enter}');
-    cy.get('#roleName').type('QA Software engineer{enter}');
-    cy.get('#startDate').type('12/2022');
-    cy.get('#endDate').type('04/2025');
-    cy.get('.order-1 > span').click();
-  }
+Cypress.Commands.add('companyData', () => {
+  cy.get('#companyName').type('DANA{enter}');
+  cy.get('#rc_select_4').click();
+  cy.wait(1000);
+  cy.get('#rc_select_4').type('Fintech{enter}');
+  cy.get('#roleLevel').click();
+  cy.wait(1000);
+  cy.get('#roleLevel').type('Associate / Officer{enter}');
+  cy.get('#roleName').type('QA Software engineer{enter}');
+  cy.get('#startDate').type('12/2022');
+  cy.get('#endDate').type('04/2025');
+  cy.get('.order-1 > span').click();
+});
 
-  institutionData(){
-    cy.get('#institution').type('Binus University{enter}');
-    cy.get('.ant-select-dropdown > div > .flex').click();
-    cy.get('#major').type('Teknik Informasi{enter}');
-    cy.get('#startDate').type('07/2018');
-    cy.get('#endDate').type('07/2022');
-    cy.get('.order-1 > span').click();
-  }
+Cypress.Commands.add('institutionData', () => {
+  cy.get('#institution').type('Binus University{enter}');
+  cy.get('.ant-select-dropdown > div > .flex').click();
+  cy.get('#major').type('Teknik Informasi{enter}');
+  cy.get('#startDate').type('07/2018');
+  cy.get('#endDate').type('07/2022');
+  cy.get('.order-1 > span').click();
+});
 
-  aboutData(){
-    cy.get('#aboutMe').type('Hi, saya adalah orang yang lagi test hehe');
-    cy.get('.order-1 > span').click();
-  }
-}
+Cypress.Commands.add('searchMentor', (mentorName) => {
+  cy.get('#searchMentor').type(`${mentorName}{enter}`);
+  cy.wait(2000);
+});
